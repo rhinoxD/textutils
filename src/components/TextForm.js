@@ -4,6 +4,15 @@ export default function TextForm({ heading }) {
   const [text, setText] = useState('')
   const handleUpClick = () => setText(text.trim().toUpperCase())
   const handleLoClick = () => setText(text.trim().toLowerCase())
+  const handleTiClick = () => {
+    let titleCase = text
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    setText(titleCase.join(' '))
+  }
+  const handleCoClick = () => navigator.clipboard.writeText(text)
+  const handleClClick = () => setText('')
   const handleOnChange = (e) => {
     setText(e.target.value)
   }
@@ -16,7 +25,7 @@ export default function TextForm({ heading }) {
           <textarea
             className='form-control'
             value={text}
-            placeholder='Enter text here...'
+            placeholder='Type or paste your content here'
             id='myBox'
             rows='8'
             onChange={handleOnChange}
@@ -25,8 +34,17 @@ export default function TextForm({ heading }) {
         <button className='btn btn-primary' onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className='btn btn-primary mx-2' onClick={handleLoClick}>
+        <button className='btn btn-primary ms-2' onClick={handleLoClick}>
           Convert to Lowercase
+        </button>
+        <button className='btn btn-primary ms-2' onClick={handleTiClick}>
+          Convert to Titlecase
+        </button>
+        <button className='btn btn-success ms-2' onClick={handleCoClick}>
+          Copy to Clipboard
+        </button>
+        <button className='btn btn-danger ms-2' onClick={handleClClick}>
+          Clear Text
         </button>
       </div>
       <div className='container text-light p-3'>
