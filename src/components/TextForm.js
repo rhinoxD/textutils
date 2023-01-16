@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function TextForm({ heading }) {
+export default function TextForm({ heading, mode }) {
   const [text, setText] = useState('')
   const handleUpClick = () => setText(text.trim().toUpperCase())
   const handleLoClick = () => setText(text.trim().toLowerCase())
@@ -20,10 +20,16 @@ export default function TextForm({ heading }) {
   const handleOnChange = (e) => {
     setText(e.target.value)
   }
-
+  const taBg = {
+    backgroundColor: '#e9eaeb',
+  }
   return (
     <>
-      <div className='mb-0 bg-dark text-light p-3'>
+      <div
+        className={`mb-0 p-2 bg-${mode} text-${
+          mode === 'light' ? 'dark' : 'light'
+        } p-3 rounded-3`}
+      >
         <h1>{heading}</h1>
         <div className='mb-3'>
           <textarea
@@ -33,6 +39,7 @@ export default function TextForm({ heading }) {
             id='myBox'
             rows='8'
             onChange={handleOnChange}
+            style={mode === 'light' ? { backgroundColor: '#fff' } : taBg}
           ></textarea>
         </div>
         <button className='btn btn-primary' onClick={handleUpClick}>
@@ -54,7 +61,11 @@ export default function TextForm({ heading }) {
           Clear Text
         </button>
       </div>
-      <div className='container text-light p-3'>
+      <div
+        className={`container text-light p-3 text-${
+          mode === 'light' ? 'dark' : 'light'
+        }`}
+      >
         <h2>Your text summary</h2>
         <p>
           {text.trim().split(' ')[0] === '' ? '0' : text.split(' ').length}
