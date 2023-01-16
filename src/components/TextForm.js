@@ -19,7 +19,7 @@ export default function TextForm({ heading }) {
 
   return (
     <>
-      <div className='container my-4 mb-0 bg-dark text-light p-3'>
+      <div className='mb-0 bg-dark text-light p-3'>
         <h1>{heading}</h1>
         <div className='mb-3'>
           <textarea
