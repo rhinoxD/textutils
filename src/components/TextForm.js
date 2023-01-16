@@ -1,22 +1,57 @@
 import { useState } from 'react'
 
-export default function TextForm({ heading, mode }) {
+export default function TextForm({ heading, mode, showAlert }) {
   const [text, setText] = useState('')
-  const handleUpClick = () => setText(text.trim().toUpperCase())
-  const handleLoClick = () => setText(text.trim().toLowerCase())
+  const handleUpClick = () => {
+    setText(text.trim().toUpperCase())
+    text &&
+      showAlert(
+        'Text converted to uppercase!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
+  }
+  const handleLoClick = () => {
+    setText(text.trim().toLowerCase())
+    text &&
+      showAlert(
+        'Text converted to lowercase!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
+  }
   const handleTiClick = () => {
     let titleCase = text
       .toLowerCase()
       .split(' ')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     setText(titleCase.join(' '))
+    text &&
+      showAlert(
+        'Text converted to titlecase!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
   }
   const handleExClick = () => {
     let newText = text.split(/[ ]+/)
     setText(newText.join(' '))
+    text &&
+      showAlert(
+        'Removed extra spaces from text!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
   }
-  const handleCoClick = () => navigator.clipboard.writeText(text)
-  const handleClClick = () => setText('')
+  const handleCoClick = () => {
+    navigator.clipboard.writeText(text)
+    text &&
+      showAlert(
+        'Text copied to clipboard!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
+  }
+  const handleClClick = () => {
+    setText('')
+    text &&
+      showAlert('Text cleared!', `${mode === 'dark' ? 'info' : 'success'} `)
+  }
   const handleOnChange = (e) => {
     setText(e.target.value)
   }
