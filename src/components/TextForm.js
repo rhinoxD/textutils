@@ -11,6 +11,10 @@ export default function TextForm({ heading }) {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     setText(titleCase.join(' '))
   }
+  const handleExClick = () => {
+    let newText = text.split(/[ ]+/)
+    setText(newText.join(' '))
+  }
   const handleCoClick = () => navigator.clipboard.writeText(text)
   const handleClClick = () => setText('')
   const handleOnChange = (e) => {
@@ -39,6 +43,9 @@ export default function TextForm({ heading }) {
         </button>
         <button className='btn btn-primary ms-2' onClick={handleTiClick}>
           Convert to Titlecase
+        </button>
+        <button className='btn btn-primary ms-2' onClick={handleExClick}>
+          Remove Extra Spaces
         </button>
         <button className='btn btn-success ms-2' onClick={handleCoClick}>
           Copy to Clipboard
