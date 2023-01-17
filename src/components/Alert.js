@@ -2,14 +2,16 @@ import React from 'react'
 
 const Alert = ({ alert }) => {
   return (
-    alert && (
-      <div
-        className={`alert alert-${alert.type} alert-dismissible fade show`}
-        role='alert'
-      >
-        {alert.message}
-      </div>
-    )
+    <div style={{ height: '40px' }}>
+      {alert && (
+        <div
+          className={`alert alert-${alert.type} alert-dismissible fade show`}
+          role='alert'
+        >
+          {alert.message}
+        </div>
+      )}
+    </div>
   )
 }
 
