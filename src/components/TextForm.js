@@ -58,6 +58,7 @@ export default function TextForm({ heading, mode, showAlert }) {
   const taBg = {
     backgroundColor: '#e9eaeb',
   }
+  // console.log(text.split(/\s+/).length)
   return (
     <>
       <div
@@ -66,7 +67,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         } p-3 rounded-3`}
       >
         <h1>{heading}</h1>
-        <div className='mb-3'>
+        <div className=''>
           <textarea
             className='form-control'
             value={text}
@@ -77,22 +78,22 @@ export default function TextForm({ heading, mode, showAlert }) {
             style={mode === 'light' ? { backgroundColor: '#fff' } : taBg}
           ></textarea>
         </div>
-        <button className='btn btn-primary' onClick={handleUpClick}>
+        <button className='btn btn-primary mt-3' onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className='btn btn-primary ms-2' onClick={handleLoClick}>
+        <button className='btn btn-primary ms-2 mt-3' onClick={handleLoClick}>
           Convert to Lowercase
         </button>
-        <button className='btn btn-primary ms-2' onClick={handleTiClick}>
+        <button className='btn btn-primary ms-2 mt-3' onClick={handleTiClick}>
           Convert to Titlecase
         </button>
-        <button className='btn btn-primary ms-2' onClick={handleExClick}>
+        <button className='btn btn-primary ms-2 mt-3' onClick={handleExClick}>
           Remove Extra Spaces
         </button>
-        <button className='btn btn-success ms-2' onClick={handleCoClick}>
+        <button className='btn btn-success ms-2 mt-3' onClick={handleCoClick}>
           Copy to Clipboard
         </button>
-        <button className='btn btn-danger ms-2' onClick={handleClClick}>
+        <button className='btn btn-danger ms-2 mt-3' onClick={handleClClick}>
           Clear Text
         </button>
       </div>
@@ -103,7 +104,13 @@ export default function TextForm({ heading, mode, showAlert }) {
       >
         <h2>Your text summary</h2>
         <p>
-          {text.trim().split(' ')[0] === '' ? '0' : text.split(' ').length}
+          {/* {text.trim().split(' ')[0] === '' ? '0' : text.split(/\s+/).length} */}
+          {/* {text.trim().split(' ')[0] === '' ? '0' : text.split(' ').length} */}
+          {text.trim().split(' ')[0] === ''
+            ? '0'
+            : text.split(' ').at(-1) === ''
+            ? text.split(/\s+/).length - 1
+            : text.split(/\s+/).length}
           {text.trim().split(' ')[0] === ''
             ? ' words and '
             : text.trim().split(' ').length === 1
