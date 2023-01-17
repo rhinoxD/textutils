@@ -2,12 +2,18 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const Navbar = ({ title, about, mode, toggleMode }) => {
+  const handleHome = () => {
+    document.title = 'TextUtils – Home'
+  }
+  const handleAbout = () => {
+    document.title = 'TextUtils – About'
+  }
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} border-bottom border-light border-opacity-10`}
     >
       <div className='container-fluid'>
-        <Link className='navbar-brand' to='/'>
+        <Link className='navbar-brand' to='/' onClick={handleHome}>
           {title}
         </Link>
         <button
@@ -28,12 +34,13 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
                 className='nav-link active'
                 aria-current='page'
                 to='/'
+                onClick={handleHome}
               >
                 Home
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/about'>
+              <Link className='nav-link' to='/about' onClick={handleAbout}>
                 {about}
               </Link>
             </li>
