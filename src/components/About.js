@@ -1,10 +1,4 @@
-import { useState } from 'react'
-
 const About = ({ mode }) => {
-  const [style, setStyle] = useState({
-    color: '#fff',
-    backgroundColor: '#212529',
-  })
   return (
     <div
       className={`mb-0 p-2 bg-${mode} text-${
