@@ -7,7 +7,7 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
       className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} border-bottom border-light border-opacity-10`}
     >
       <div className='container-fluid'>
-        <Link className='navbar-brand' to='/textutils'>
+        <Link className='navbar-brand' to='/'>
           {title}
         </Link>
         <button
@@ -27,13 +27,13 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
               <Link
                 className='nav-link active'
                 aria-current='page'
-                to='/textutils'
+                to='/'
               >
                 Home
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/textutils/about'>
+              <Link className='nav-link' to='/about'>
                 {about}
               </Link>
             </li>
