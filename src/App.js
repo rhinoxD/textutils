@@ -44,12 +44,12 @@ function App() {
         <Routes>
           <Route
             exact
-            path='/about'
+            path='/textutils/about'
             element={<About mode={mode} showAlert={showAlert} />}
           />
           <Route
             exact
-            path='/'
+            path='/textutils'
             element={
               <TextForm
                 heading='Enter the text to analyze'

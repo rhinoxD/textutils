@@ -7,7 +7,7 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
       className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} border-bottom border-light border-opacity-10`}
     >
       <div className='container-fluid'>
-        <Link className='navbar-brand' to='/'>
+        <Link className='navbar-brand' to='/textutils'>
           {title}
         </Link>
         <button
@@ -24,12 +24,16 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item'>
-              <Link className='nav-link active' aria-current='page' to='/'>
+              <Link
+                className='nav-link active'
+                aria-current='page'
+                to='/textutils'
+              >
                 Home
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/about'>
+              <Link className='nav-link' to='/textutils/about'>
                 {about}
               </Link>
             </li>
