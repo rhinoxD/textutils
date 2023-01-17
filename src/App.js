@@ -42,7 +42,11 @@ function App() {
       <Alert alert={alert} />
       <div className='container my-4'>
         <Routes>
-          <Route exact path='/about' element={<About />} />
+          <Route
+            exact
+            path='/about'
+            element={<About mode={mode} showAlert={showAlert} />}
+          />
           <Route
             exact
             path='/'

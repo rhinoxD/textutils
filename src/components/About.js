@@ -1,55 +1,36 @@
 import { useState } from 'react'
 
-const About = () => {
+const About = ({ mode }) => {
   const [style, setStyle] = useState({
     color: '#fff',
     backgroundColor: '#212529',
   })
-  const [btnText, setBtnText] = useState('Enable Light Mode')
-  const [btnColor, setBtnColor] = useState({
-    color: '#fff',
-    backgroundColor: '#212529',
-    border: '1px solid #fff',
-  })
-  const toggleMode = () => {
-    if (style.color === '#000') {
-      setStyle({
-        color: '#fff',
-        backgroundColor: '#212529',
-      })
-      setBtnText('Enable Light Mode')
-      setBtnColor({
-        color: '#fff',
-        backgroundColor: '#212529',
-        border: '1px solid #fff',
-      })
-    } else {
-      setStyle({
-        color: '#000',
-        backgroundColor: '#fff',
-      })
-      setBtnText('Enable Dark Mode')
-      setBtnColor({
-        color: '#000',
-        backgroundColor: '#fff',
-        border: 'none',
-      })
-    }
-  }
   return (
-    <div className='container'>
-      <h1 className='text-white'>About Us</h1>
+    <div
+      className={`mb-0 p-2 bg-${mode} text-${
+        mode === 'light' ? 'dark' : 'light'
+      } p-3 rounded-3`}
+    >
+      <h1 className={`text-${mode === 'light' ? 'dark' : 'light'}`}>
+        About Us
+      </h1>
       <div className='accordion' id='accordionExample'>
-        <div className='accordion-item'>
+        <div
+          className={`accordion-item 
+        text-${mode === 'light' ? 'dark' : 'light'}
+        bg-dark
+        `}
+        >
           <h2 className='accordion-header' id='headingOne'>
             <button
-              className='accordion-button'
+              className={`accordion-button bg-${
+                mode === 'light' ? 'light' : 'dark'
+              } text-${mode === 'light' ? 'dark' : 'light'}`}
               type='button'
               data-bs-toggle='collapse'
               data-bs-target='#collapseOne'
               aria-expanded='true'
               aria-controls='collapseOne'
-              style={style}
             >
               Accordion Item #1
             </button>
@@ -60,7 +41,11 @@ const About = () => {
             aria-labelledby='headingOne'
             data-bs-parent='#accordionExample'
           >
-            <div className='accordion-body' style={style}>
+            <div
+              className={`accordion-body 
+              bg-${mode === 'light' ? 'light' : 'dark'}
+              text-${mode === 'light' ? 'dark' : 'light'}`}
+            >
               <strong>This is the first item's accordion body.</strong> It is
               shown by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees
@@ -75,13 +60,14 @@ const About = () => {
         <div className='accordion-item'>
           <h2 className='accordion-header' id='headingTwo'>
             <button
-              className='accordion-button collapsed'
+              className={`accordion-button collapsed bg-${
+                mode === 'light' ? 'light' : 'dark'
+              } text-${mode === 'light' ? 'dark' : 'light'}`}
               type='button'
               data-bs-toggle='collapse'
               data-bs-target='#collapseTwo'
               aria-expanded='false'
               aria-controls='collapseTwo'
-              style={style}
             >
               Accordion Item #2
             </button>
@@ -92,7 +78,11 @@ const About = () => {
             aria-labelledby='headingTwo'
             data-bs-parent='#accordionExample'
           >
-            <div className='accordion-body' style={style}>
+            <div
+              className={`accordion-body 
+              bg-${mode === 'light' ? 'light' : 'dark'}
+              text-${mode === 'light' ? 'dark' : 'light'}`}
+            >
               <strong>This is the second item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees
@@ -107,13 +97,14 @@ const About = () => {
         <div className='accordion-item'>
           <h2 className='accordion-header' id='headingThree'>
             <button
-              className='accordion-button collapsed'
+              className={`accordion-button collapsed bg-${
+                mode === 'light' ? 'light' : 'dark'
+              } text-${mode === 'light' ? 'dark' : 'light'}`}
               type='button'
               data-bs-toggle='collapse'
               data-bs-target='#collapseThree'
               aria-expanded='false'
               aria-controls='collapseThree'
-              style={style}
             >
               Accordion Item #3
             </button>
@@ -124,7 +115,11 @@ const About = () => {
             aria-labelledby='headingThree'
             data-bs-parent='#accordionExample'
           >
-            <div className='accordion-body' style={style}>
+            <div
+              className={`accordion-body 
+              bg-${mode === 'light' ? 'light' : 'dark'}
+              text-${mode === 'light' ? 'dark' : 'light'}`}
+            >
               <strong>This is the third item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees
@@ -137,9 +132,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      <button className='btn my-2' onClick={toggleMode} style={btnColor}>
-        {btnText}
-      </button>
     </div>
   )
 }
