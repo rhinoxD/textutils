@@ -2,6 +2,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const Navbar = ({ title, about, mode, toggleMode }) => {
+  const handleMain = () => {
+    document.title = 'TextUtils – Word Counter | Character Counter'
+  }
   const handleHome = () => {
     document.title = 'TextUtils – Home'
   }
@@ -13,7 +16,7 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
       className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} border-bottom border-light border-opacity-10`}
     >
       <div className='container-fluid'>
-        <Link className='navbar-brand' to='/textutils' onClick={handleHome}>
+        <Link className='navbar-brand' to='/textutils' onClick={handleMain}>
           {title}
         </Link>
         <button
@@ -40,7 +43,11 @@ const Navbar = ({ title, about, mode, toggleMode }) => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/textutils/about' onClick={handleAbout}>
+              <Link
+                className='nav-link'
+                to='/textutils/about'
+                onClick={handleAbout}
+              >
                 {about}
               </Link>
             </li>
