@@ -58,7 +58,6 @@ export default function TextForm({ heading, mode, showAlert }) {
   const taBg = {
     backgroundColor: '#e9eaeb',
   }
-  // console.log(text.split(/\s+/).length)
   return (
     <>
       <div
@@ -78,22 +77,46 @@ export default function TextForm({ heading, mode, showAlert }) {
             style={mode === 'light' ? { backgroundColor: '#fff' } : taBg}
           ></textarea>
         </div>
-        <button disabled={text.length === 0} className='btn btn-primary mt-3' onClick={handleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-primary mt-3'
+          onClick={handleUpClick}
+        >
           Convert to Uppercase
         </button>
-        <button disabled={text.length === 0} className='btn btn-primary ms-2 mt-3' onClick={handleLoClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-primary ms-2 mt-3'
+          onClick={handleLoClick}
+        >
           Convert to Lowercase
         </button>
-        <button disabled={text.length === 0} className='btn btn-primary ms-2 mt-3' onClick={handleTiClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-primary ms-2 mt-3'
+          onClick={handleTiClick}
+        >
           Convert to Titlecase
         </button>
-        <button disabled={text.length === 0} className='btn btn-primary ms-2 mt-3' onClick={handleExClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-primary ms-2 mt-3'
+          onClick={handleExClick}
+        >
           Remove Extra Spaces
         </button>
-        <button disabled={text.length === 0} className='btn btn-success ms-2 mt-3' onClick={handleCoClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-success ms-2 mt-3'
+          onClick={handleCoClick}
+        >
           Copy to Clipboard
         </button>
-        <button disabled={text.length === 0} className='btn btn-danger ms-2 mt-3' onClick={handleClClick}>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-danger ms-2 mt-3'
+          onClick={handleClClick}
+        >
           Clear Text
         </button>
       </div>
@@ -108,7 +131,7 @@ export default function TextForm({ heading, mode, showAlert }) {
           {/* {text.trim().split(' ')[0] === '' ? '0' : text.split(' ').length} */}
           {text.trim().split(' ')[0] === ''
             ? '0'
-            : text.split(' ').at(-1) === ''
+            : text.split(/\s+/).at(-1) === ''
             ? text.split(/\s+/).length - 1
             : text.split(/\s+/).length}
           {text.trim().split(' ')[0] === ''

@@ -19,7 +19,7 @@ const About = ({ mode }) => {
             <button
               className={`accordion-button bg-${
                 mode === 'light' ? 'light' : 'dark'
-              } text-${mode === 'light' ? 'dark' : 'light'}`}
+              } text-${mode === 'light' ? 'dark' : 'light'} `}
               type='button'
               data-bs-toggle='collapse'
               data-bs-target='#collapseOne'
