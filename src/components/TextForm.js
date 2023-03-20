@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 export default function TextForm({ heading, mode, showAlert }) {
   const [text, setText] = useState('')
+
   const handleUpClick = () => {
     setText(text.trim().toUpperCase())
     text &&
@@ -10,6 +11,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         `${mode === 'dark' ? 'info' : 'success'} `
       )
   }
+
   const handleLoClick = () => {
     setText(text.trim().toLowerCase())
     text &&
@@ -18,6 +20,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         `${mode === 'dark' ? 'info' : 'success'} `
       )
   }
+
   const handleTiClick = () => {
     let titleCase = text
       .toLowerCase()
@@ -30,6 +33,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         `${mode === 'dark' ? 'info' : 'success'} `
       )
   }
+
   const handleExClick = () => {
     let newText = text.split(/[ ]+/)
     setText(newText.join(' '))
@@ -39,6 +43,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         `${mode === 'dark' ? 'info' : 'success'} `
       )
   }
+
   const handleCoClick = () => {
     navigator.clipboard.writeText(text)
     text &&
@@ -47,17 +52,31 @@ export default function TextForm({ heading, mode, showAlert }) {
         `${mode === 'dark' ? 'info' : 'success'} `
       )
   }
+
   const handleClClick = () => {
     setText('')
     text &&
       showAlert('Text cleared!', `${mode === 'dark' ? 'info' : 'success'} `)
   }
+
+  const handleSlClick = () => {
+    let slug = text.toLowerCase().split(' ').join('-')
+    setText(slug)
+    text &&
+      showAlert(
+        'Text converted to slug!',
+        `${mode === 'dark' ? 'info' : 'success'} `
+      )
+  }
+
   const handleOnChange = (e) => {
     setText(e.target.value)
   }
+
   const taBg = {
     backgroundColor: '#e9eaeb',
   }
+
   return (
     <>
       <div
@@ -79,42 +98,49 @@ export default function TextForm({ heading, mode, showAlert }) {
         </div>
         <button
           disabled={text.length === 0}
-          className='btn btn-primary mt-3'
+          className='btn btn-primary mt-3 me-2'
           onClick={handleUpClick}
         >
           Convert to Uppercase
         </button>
         <button
           disabled={text.length === 0}
-          className='btn btn-primary ms-2 mt-3'
+          className='btn btn-primary me-2 mt-3'
           onClick={handleLoClick}
         >
           Convert to Lowercase
         </button>
         <button
           disabled={text.length === 0}
-          className='btn btn-primary ms-2 mt-3'
+          className='btn btn-primary me-2 mt-3'
           onClick={handleTiClick}
         >
           Convert to Titlecase
         </button>
         <button
           disabled={text.length === 0}
-          className='btn btn-primary ms-2 mt-3'
+          className='btn btn-primary me-2 mt-3'
+          onClick={handleSlClick}
+        >
+          Convert to Slug
+        </button>
+        <button
+          disabled={text.length === 0}
+          className='btn btn-primary me-2 mt-3'
           onClick={handleExClick}
         >
           Remove Extra Spaces
         </button>
         <button
           disabled={text.length === 0}
-          className='btn btn-success ms-2 mt-3'
+          className='btn btn-success me-2 mt-3'
           onClick={handleCoClick}
         >
           Copy to Clipboard
         </button>
         <button
           disabled={text.length === 0}
-          className='btn btn-danger ms-2 mt-3'
+          className='btn btn-danger me-2 mt-3'
           onClick={handleClClick}
         >
           Clear Text
